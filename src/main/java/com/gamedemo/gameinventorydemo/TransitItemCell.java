@@ -12,7 +12,7 @@ public class TransitItemCell extends StackPane {
         this.setWidth(200);
         this.setHeight(200);
         this.getChildren().addAll(imageView);
-        this.setBackground(new Background(new BackgroundImage(GameMainWindow.cell_B_G_L,
+        this.setBackground(new Background(new BackgroundImage(ImagePreparation.cell_B_G_Transit,
                 BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT,
                 BackgroundPosition.CENTER, BackgroundSize.DEFAULT)));
     }
