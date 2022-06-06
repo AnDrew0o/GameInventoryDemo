@@ -7,19 +7,19 @@ public class InventoryCreative extends Inventory {
     }
 
     @Override
-    public void initializeItemCells() {
-        for (Item item : ImagePreparation.itemsS) {
+    protected void initializeItemCells() {
+        for (Item item : ItemPreparation.itemsL) {
+            ItemCell itemCell = new ItemCellLarge(transitCell);
+            itemCell.setItem(item);
+            itemCells.add(itemCell);
+        }
+        for (Item item : ItemPreparation.itemsS) {
             ItemCell itemCell = new ItemCellSmall(transitCell);
             itemCell.setItem(item);
             itemCells.add(itemCell);
         }
-        for (Item item : ImagePreparation.itemsM) {
+        for (Item item : ItemPreparation.itemsM) {
             ItemCell itemCell = new ItemCellMedium(transitCell);
-            itemCell.setItem(item);
-            itemCells.add(itemCell);
-        }
-        for (Item item : ImagePreparation.itemsL) {
-            ItemCell itemCell = new ItemCellLarge(transitCell);
             itemCell.setItem(item);
             itemCells.add(itemCell);
         }

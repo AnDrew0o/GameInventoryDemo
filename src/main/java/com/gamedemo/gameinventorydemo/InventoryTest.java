@@ -7,21 +7,15 @@ public class InventoryTest extends Inventory {
     }
 
     @Override
-    public void initializeItemCells() {
+    protected void initializeItemCells() {
         itemCells.add(new ItemCellLarge(transitCell));
 
-        for (int i = 0; i < 9; i++) {
+        for (int i = 0; i < 10; i++) {
             itemCells.add(new ItemCellMedium(transitCell));
         }
 
-        itemCells.add(new ItemCellLarge(transitCell));
-        itemCells.add(new ItemCellLarge(transitCell));
-
-        for (int i = 0; i < 13; i++) {
+        for (int i = 0; i < 8; i++) {
             itemCells.add(new ItemCellSmall(transitCell));
-        }
-        for (int i = 0; i < 5; i++) {
-            itemCells.add(new ItemCellMedium(transitCell));
         }
     }
 }

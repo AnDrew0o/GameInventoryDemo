@@ -4,9 +4,9 @@ import javafx.scene.image.Image;
 
 public class Item {
 
-    String name;
-    Image image;
-    Size size;
+    private String name;
+    private Image image;
+    private Size size;
 
     public Item(String name, Image image) {
         this.name = name;

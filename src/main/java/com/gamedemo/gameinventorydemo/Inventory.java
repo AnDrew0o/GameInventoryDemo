@@ -10,19 +10,19 @@ import java.util.List;
 
 public abstract class Inventory extends ScrollPane {
 
-    List<ItemCell> itemCells = new ArrayList<>();
+    protected List<ItemCell> itemCells = new ArrayList<>();
 
-    FlowPane flowPane = new FlowPane();
-    Accordion accordion = new Accordion();
-    Group group = new Group(flowPane, accordion);
-    TransitItemCell transitCell;
+    protected TransitItemCell transitCell;
 
-    public Inventory(TransitItemCell transitCell) {
+    protected Inventory(TransitItemCell transitCell) {
         this.transitCell = transitCell;
         this.setHbarPolicy(ScrollBarPolicy.NEVER);
         this.setVbarPolicy(ScrollBarPolicy.NEVER);
         this.setMinWidth(400);
+        FlowPane flowPane = new FlowPane();
         flowPane.setMinWidth(400);
+        Accordion accordion = new Accordion();
+        Group group = new Group(flowPane, accordion);
         this.setContent(group);
 
         initializeItemCells();
@@ -32,5 +32,5 @@ public abstract class Inventory extends ScrollPane {
         }
     }
 
-    public abstract void initializeItemCells();
+    protected abstract void initializeItemCells();
 }

@@ -10,20 +10,20 @@ import javafx.scene.layout.*;
 
 public abstract class ItemCell extends StackPane {
 
-    Item item;
+    private Item item;
 
-    Button button = new Button();
-    ImageView imageView = new ImageView();
-    Label label = new Label();
+    private final Button BUTTON = new Button();
+    private final ImageView IMAGE_VIEW = new ImageView();
+    private final Label LABEL = new Label();
 
-    double opacity = 0;
-    String empty = "empty";
-    int height = 100;
+    private final double OPACITY = 0;
+    private final String EMPTY = "empty";
+    private final int HEIGHT = 100;
 
-    TransitItemCell transitCell;
-    Size containItemSize;
-    Image backgroundImage;
-    int width;
+    private TransitItemCell transitCell;
+    private Size containItemSize;
+    private Image backgroundImage;
+    private int width;
 
     public ItemCell(TransitItemCell transitCell, Size containItemSize, Image image, int width) {
         this.transitCell = transitCell;
@@ -35,24 +35,24 @@ public abstract class ItemCell extends StackPane {
     public void setItem(Item item) {
         this.item = item;
         if (item != null) {
-            this.imageView.setImage(item.getImage());
-            this.label.setText(item.getName());
+            this.IMAGE_VIEW.setImage(item.getImage());
+            this.LABEL.setText(item.getName());
         } else {
-            this.imageView.setImage(null);
-            this.label.setText(empty);
+            this.IMAGE_VIEW.setImage(null);
+            this.LABEL.setText(EMPTY);
         }
     }
 
     void applyAction() {
-        button.setOnAction(e -> {
-            if (item == null && transitCell.getItem() != null && transitCell.getItem().getSize() == containItemSize) {
+        BUTTON.setOnAction(e -> {
+            if (item == null && transitCell.getItem() != null && transitCell.getItem().getSize().getWeight() <= containItemSize.getWeight()) {
                 this.setItem(transitCell.getItem());
                 transitCell.setItem(null);
             } else if (transitCell.getItem() == null && item != null) {
                 transitCell.setItem(item);
                 this.setItem(null);
             }
-            else if (transitCell.getItem() != item && transitCell.getItem().getSize() == containItemSize) {
+            else if (transitCell.getItem() != item && transitCell.getItem().getSize().getWeight() <= containItemSize.getWeight()) {
                 Item tempItem = item;
                 this.setItem(transitCell.getItem());
                 transitCell.setItem(tempItem);
@@ -65,14 +65,14 @@ public abstract class ItemCell extends StackPane {
                 BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT,
                 BackgroundPosition.CENTER, BackgroundSize.DEFAULT)));
 
-        label.setText(empty);
+        LABEL.setText(EMPTY);
 
-        button.setMinSize(width, height);
-        button.setOpacity(opacity);
-        button.setFocusTraversable(false);
+        BUTTON.setMinSize(width, HEIGHT);
+        BUTTON.setOpacity(OPACITY);
+        BUTTON.setFocusTraversable(false);
 
         this.setAlignment(Pos.BOTTOM_CENTER);
-        StackPane.setMargin(label, new Insets(0,0,5,0));
-        this.getChildren().addAll(imageView, label, button);
+        StackPane.setMargin(LABEL, new Insets(0,0,5,0));
+        this.getChildren().addAll(IMAGE_VIEW, LABEL, BUTTON);
     }
 }

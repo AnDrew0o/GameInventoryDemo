@@ -2,10 +2,7 @@ package com.gamedemo.gameinventorydemo;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.io.FileNotFoundException;
@@ -15,6 +12,7 @@ public class GameMainWindow extends Application {
     @Override
     public void start(Stage stage) throws FileNotFoundException {
 
+        ItemPreparation.prepare();
         ImagePreparation.prepare();
 
         BorderPane mainWindowView = new BorderPane();
